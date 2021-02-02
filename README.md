@@ -1,4 +1,4 @@
-# post-api
+# post_api
 
 ## Installation
 1. Install `java 1.8.0`
