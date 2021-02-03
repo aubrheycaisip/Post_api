@@ -1,22 +1,49 @@
 <?xml version="1.1" encoding="UTF-8" standalone="no"?>
 <databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog" xmlns:ext="http://www.liquibase.org/xml/ns/dbchangelog-ext" xmlns:pro="http://www.liquibase.org/xml/ns/pro" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog-ext http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-ext.xsd http://www.liquibase.org/xml/ns/pro http://www.liquibase.org/xml/ns/pro/liquibase-pro-4.1.xsd http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-4.1.xsd">
-    <changeSet author="aubrheycaisip (generated)" id="1612273576195-1">
-        <createTable tableName="User">
+    <changeSet author="aubrheycaisip (generated)" id="1612313543446-1">
+        <createTable tableName="image">
             <column autoIncrement="true" name="id" type="BIGINT">
-                <constraints nullable="false" primaryKey="true" primaryKeyName="UserPK"/>
+                <constraints nullable="false" primaryKey="true" primaryKeyName="imagePK"/>
             </column>
             <column name="date_created" type="datetime"/>
             <column name="date_updated" type="datetime"/>
-            <column name="last_modified_by" type="VARCHAR(255)"/>
+            <column name="image_source" type="VARCHAR(255)"/>
+            <column name="post_id" type="BIGINT"/>
+        </createTable>
+    </changeSet>
+    <changeSet author="aubrheycaisip (generated)" id="1612313543446-2">
+        <createTable tableName="post">
+            <column autoIncrement="true" name="id" type="BIGINT">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="postPK"/>
+            </column>
+            <column name="date_created" type="datetime"/>
+            <column name="date_updated" type="datetime"/>
+            <column name="caption" type="VARCHAR(255)"/>
+            <column name="user_id" type="BIGINT"/>
+        </createTable>
+    </changeSet>
+    <changeSet author="aubrheycaisip (generated)" id="1612313543446-3">
+        <createTable tableName="user">
+            <column autoIncrement="true" name="id" type="BIGINT">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="userPK"/>
+            </column>
+            <column name="date_created" type="datetime"/>
+            <column name="date_updated" type="datetime"/>
             <column name="address" type="VARCHAR(255)"/>
             <column name="birthday" type="BIGINT"/>
             <column name="email" type="VARCHAR(255)"/>
-            <column name="firstName" type="VARCHAR(255)"/>
+            <column name="first_name" type="VARCHAR(255)"/>
             <column name="gender" type="VARCHAR(255)"/>
-            <column name="lastName" type="VARCHAR(255)"/>
-            <column name="middleName" type="VARCHAR(255)"/>
+            <column name="last_name" type="VARCHAR(255)"/>
+            <column name="middle_name" type="VARCHAR(255)"/>
             <column name="password" type="VARCHAR(255)"/>
             <column name="username" type="VARCHAR(255)"/>
         </createTable>
+    </changeSet>
+    <changeSet author="aubrheycaisip (generated)" id="1612313543446-4">
+        <addForeignKeyConstraint baseColumnNames="user_id" baseTableName="post" constraintName="FK72mt33dhhs48hf9gcqrq4fxte" deferrable="false" initiallyDeferred="false" referencedColumnNames="id" referencedTableName="user" validate="true"/>
+    </changeSet>
+    <changeSet author="aubrheycaisip (generated)" id="1612313543446-5">
+        <addForeignKeyConstraint baseColumnNames="post_id" baseTableName="image" constraintName="FKe2l07hc93u2bbjnl80meu3rn4" deferrable="false" initiallyDeferred="false" referencedColumnNames="id" referencedTableName="post" validate="true"/>
     </changeSet>
 </databaseChangeLog>

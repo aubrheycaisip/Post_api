@@ -13,7 +13,7 @@ import lombok.Data;
 
 @MappedSuperclass
 @Data
-public abstract class DateAudit<U> {
+public abstract class DateAudit {
 
 	@CreatedDate
 	@Column(name="date_created")
@@ -23,7 +23,7 @@ public abstract class DateAudit<U> {
 	@Column(name="date_updated")
 	private Date dateUpdated;
 	
-	@LastModifiedBy
-    @Column(name = "last_modified_by")
-    private U lastModifiedBy;
+//	@LastModifiedBy
+//    @Column(name = "last_modified_by")
+//    private U lastModifiedBy;
 }
